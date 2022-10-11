@@ -1,0 +1,16 @@
+.loginContainer {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20vh;
+}
+.loginLabels {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5vh;
+}
+
+.signInButton {
+  color: rgb(0, 0, 0) !important;
+  border-color: black !important;
+}

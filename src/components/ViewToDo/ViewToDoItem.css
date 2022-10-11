@@ -1,0 +1,7 @@
+.completed {
+  color: rgb(48, 140, 48);
+}
+
+.notCompleted {
+  color: rgb(255, 54, 54);
+}

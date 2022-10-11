@@ -1,0 +1,21 @@
+.viewToDoContainer {
+  margin-top: 5vh;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80vw;
+}
+
+.toDoText {
+  padding-right: 30vw;
+  margin-right: 20vw;
+}
+
+.toDoText p {
+}
+
+.selectField {
+  width: 20vw;
+}
