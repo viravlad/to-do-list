@@ -27,7 +27,7 @@ const NewToDo = () => {
         <TextField
           id="standard-basic"
           label="Add new todo"
-          variant="standard"
+          variant="filled"
           className="inputField"
           onChange={(e) => {
             setEnteredToDoName(e.target.value);

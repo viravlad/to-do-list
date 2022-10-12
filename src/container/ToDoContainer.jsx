@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import NewToDo from "./NewToDoForm/NewToDo";
-import { getToDoListService } from "./services/getToDoListService";
-import ViewToDo from "./ViewToDo/ViewToDoList";
+import NewToDo from "../components/NewToDoForm/NewToDo";
+import { getToDoListService } from "../components/services/getToDoListService";
+import ViewToDo from "../components/ViewToDo/ViewToDoList";
+import "./ToDoContainer.css";
 
 const ToDoContainer = () => {
   const [todos, setTodos] = useState([]);
@@ -28,7 +29,7 @@ const ToDoContainer = () => {
     <>
       <NewToDo />
       {!toDoError ? <ViewToDo todos={todos} /> : toDoError}
-      {isLoading ? <h1>LOADDDING</h1> : <h1>Is NOt LOADING</h1>}
+      {/* {isLoading ? <h1>LOADDDING</h1> : <h1>Is NOt LOADING</h1>} */}
     </>
   );
 };

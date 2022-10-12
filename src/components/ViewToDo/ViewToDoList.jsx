@@ -3,7 +3,7 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import "./ViewToDo.css";
+import "./ViewToDoList.css";
 import List from "@mui/material/List";
 import ViewToDoItem from "./ViewToDoItem";
 import { useEffect, useState } from "react";
@@ -33,7 +33,7 @@ const ViewToDoList = ({ todos }) => {
   };
 
   return (
-    <Box className="viewToDoContainer">
+    <Box className="viewToDoList">
       <FormControl className="toDoSelect">
         <InputLabel id="demo-simple-select-label">All</InputLabel>
         <Select
@@ -51,7 +51,7 @@ const ViewToDoList = ({ todos }) => {
           <MenuItem value={"not completed"}>Not Completed</MenuItem>
         </Select>
       </FormControl>
-      <List>
+      <List className="listItems">
         {filteredTodos.map((todo) => (
           <ViewToDoItem todo={todo} />
         ))}

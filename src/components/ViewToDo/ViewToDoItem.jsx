@@ -25,6 +25,7 @@ const ViewToDoItem = ({ todo }) => {
 
   return (
     <ListItem
+      className="listItem"
       key={todo.id}
       secondaryAction={
         <>

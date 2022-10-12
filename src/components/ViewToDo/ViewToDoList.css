@@ -1,0 +1,35 @@
+.viewToDoList {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 1rem;
+}
+.listItems {
+  width: 80vw;
+  overflow: auto;
+  height: 45vh;
+}
+.toDoText {
+  padding-right: 30vw;
+  margin-right: 20vw;
+}
+
+.selectField {
+  width: 40vw;
+  margin-bottom: 1rem;
+}
+
+.toDoSelect {
+  margin-bottom: 1rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .listItems {
+    width: 80vw;
+  }
+  .selectField {
+    width: 50vw;
+  }
+}
