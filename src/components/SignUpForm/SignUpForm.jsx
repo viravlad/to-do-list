@@ -35,7 +35,10 @@ const SignUpForm = () => {
       open={signUpModalContext.isModalOpen}
       className="signUpContainer"
     >
-      <DialogTitle>Sign Up</DialogTitle>
+      <DialogTitle>
+        S<span style={{ color: "#FBA100" }}>i</span>gn{" "}
+        <span style={{ color: "#408697" }}>U</span>p
+      </DialogTitle>
       <Box
         sx={{ display: "flex", flexDirection: "column" }}
         className="signUpForm"
@@ -67,7 +70,10 @@ const SignUpForm = () => {
         </Button>
       </Box>
       <DialogActions>
-        <Button onClick={signUpModalContext.closeSignUpModalHandler}>
+        <Button
+          onClick={signUpModalContext.closeSignUpModalHandler}
+          style={{ color: "#408697" }}
+        >
           Close
         </Button>
       </DialogActions>

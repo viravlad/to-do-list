@@ -8,12 +8,12 @@ import List from "@mui/material/List";
 import ViewToDoItem from "./ViewToDoItem";
 import { useEffect, useState } from "react";
 
-const ViewToDo = ({ todos }) => {
+const ViewToDoList = ({ todos }) => {
   const [filteredTodos, setFilteredTodos] = useState([]);
   const [toDoStatus, setToDoStatus] = useState("");
   useEffect(() => {
     setFilteredTodos(todos);
-  }, []);
+  }, [todos]);
 
   const displayToDoStatus = (e) => {
     setToDoStatus(e);
@@ -60,4 +60,4 @@ const ViewToDo = ({ todos }) => {
   );
 };
 
-export default ViewToDo;
+export default ViewToDoList;

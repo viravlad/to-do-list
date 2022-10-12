@@ -2,7 +2,7 @@
   margin: auto;
   display: flex;
   flex-direction: column;
-  margin-top: 20vh;
+  padding: 1rem;
 }
 .loginLabels {
   display: flex;
@@ -11,6 +11,34 @@
 }
 
 .signInButton {
-  color: rgb(0, 0, 0) !important;
+  color: rgb(215, 215, 215) !important;
+  background-color: #408697 !important;
   border-color: black !important;
+  margin-bottom: 1rem !important;
+}
+.signUpButton {
+  color: white !important;
+  background-color: #fba100 !important;
+  border-color: black !important;
+  margin-top: 1rem !important;
+}
+.loginButtonsBox {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+.usernameInput {
+  margin-bottom: 1rem !important;
+  border: none !;
+}
+
+.or {
+  width: 80%;
+  border-bottom: 1px solid #000;
+  line-height: 0.1em;
+  margin: 10px auto 10px;
+}
+.or span {
+  background-color: #f2f2f2f2;
+  padding: 0 5px;
 }

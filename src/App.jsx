@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import AuthContext from "./components/LoginContext/auth-context";
 import LoginForm from "./components/LoginForm/LoginForm";
-import Navbar from "./components/Navbar/Navbar";
+import Header from "./components/Navbar/Header";
 import SignUpForm from "./components/SignUpForm/SignUpForm";
 import ToDoContainer from "./components/ToDoContainer";
 function App() {
@@ -10,7 +10,7 @@ function App() {
   const isLoggedIn = true;
   return (
     <div className="App">
-      <Navbar />
+      <Header />
       <SignUpForm />
       {!isLoggedIn ? <LoginForm /> : <ToDoContainer />}
     </div>

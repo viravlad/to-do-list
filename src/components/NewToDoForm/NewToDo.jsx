@@ -3,15 +3,11 @@ import Box from "@mui/material/Box";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import Button from "@mui/material/Button";
 import "./NewTodo.css";
-import { useState } from "react";
 import { newToDoService } from "../services/newToDoService";
+import React from "react";
 
 const NewToDo = () => {
-  const [enteredToDoName, setEnteredToDoName] = useState("");
-
-  const enteredToDoNameHandler = (e) => {
-    setEnteredToDoName(e.target.value);
-  };
+  const [enteredToDoName, setEnteredToDoName] = React.useState("");
 
   const addNewToDoHandler = () => {
     if (enteredToDoName === "") {
@@ -30,10 +26,12 @@ const NewToDo = () => {
       <div style={{ flexdirection: "row" }}>
         <TextField
           id="standard-basic"
-          label="Standard"
+          label="Add new todo"
           variant="standard"
           className="inputField"
-          onChange={enteredToDoNameHandler}
+          onChange={(e) => {
+            setEnteredToDoName(e.target.value);
+          }}
           value={enteredToDoName}
         />
         {/* {enteredToDoNameError && (

@@ -1,14 +1,20 @@
 .signUpContainer {
-  margin: auto;
+  margin: auto !important;
 }
 .signUpForm {
-  width: 20rem;
-  height: 10rem;
+  width: 15rem !important;
+  height: 15rem;
   padding: 1.5rem;
+  margin: auto;
 }
 .signUpForm > button {
   width: 10rem;
   margin: auto;
+  border: none !important;
+}
+
+.signUpForm > button :hover {
+  background-color: red !important;
 }
 
 .signUpForm > div {
