@@ -13,10 +13,6 @@
   border: none !important;
 }
 
-.signUpForm > button :hover {
-  background-color: red !important;
-}
-
 .signUpForm > div {
   margin-bottom: 2rem;
 }
