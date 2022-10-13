@@ -8,8 +8,9 @@ import React from "react";
 
 const NewToDo = () => {
   const [enteredToDoName, setEnteredToDoName] = React.useState("");
+  const [error, setError] = React.useState("");
 
-  const addNewToDoHandler = () => {
+  const addNewToDoHandler = async () => {
     if (enteredToDoName === "") {
       return;
     }
@@ -17,7 +18,13 @@ const NewToDo = () => {
       name: enteredToDoName,
       status: "not completed",
     };
-    newToDoService(newToDo);
+    try {
+      newToDoService(newToDo);
+    } catch (error) {
+      console.log(error);
+      setError(error.message);
+    }
+
     setEnteredToDoName("");
   };
 
@@ -43,6 +50,7 @@ const NewToDo = () => {
       <Button variant="text" onClick={addNewToDoHandler}>
         <AddCircleIcon className="addNewToDoIcon" />
       </Button>
+      <p>{error}</p>
     </Box>
   );
 };

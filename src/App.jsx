@@ -7,12 +7,12 @@ import SignUpForm from "./components/SignUpForm/SignUpForm";
 import ToDoContainer from "./container/ToDoContainer";
 function App() {
   const authCtx = React.useContext(AuthContext);
-  const isLoggedIn = true;
+  const isLoggedIn = false;
   return (
     <div className="App">
       <Header />
       <SignUpForm />
-      {!isLoggedIn ? <LoginForm /> : <ToDoContainer />}
+      {!authCtx.isLoggedIn ? <LoginForm /> : <ToDoContainer />}
     </div>
   );
 }

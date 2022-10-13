@@ -11,14 +11,14 @@
 }
 
 .signInButton {
-  color: rgb(215, 215, 215) !important;
-  background-color: #408697 !important;
+  color: black !important;
+  background-color: #fba100 !important;
   border-color: black !important;
   margin-bottom: 1rem !important;
 }
 .signUpButton {
-  color: white !important;
-  background-color: #fba100 !important;
+  color: white;
+  background-color: #408697 !important;
   border-color: black !important;
   margin-top: 1rem !important;
 }

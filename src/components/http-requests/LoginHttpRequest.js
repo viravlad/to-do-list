@@ -12,9 +12,13 @@ export async function LoginHttpRequest(email, password) {
         body: JSON.stringify(credentials),
       }
     );
+    if (!response.ok) {
+      const errorBody = await response.json();
+      throw new Error(errorBody.error.message);
+    }
     const data = await response.json();
-    return data.idToken;
+    return data;
   } catch (error) {
-    throw new Error(error);
+    throw error;
   }
 }

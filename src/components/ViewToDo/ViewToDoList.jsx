@@ -35,12 +35,12 @@ const ViewToDoList = ({ todos }) => {
   return (
     <Box className="viewToDoList">
       <FormControl className="toDoSelect">
-        <InputLabel id="demo-simple-select-label">All</InputLabel>
+        <InputLabel id="demo-simple-select-label">Status</InputLabel>
         <Select
           className="selectField"
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          label="Age"
+          label="Status"
           value={toDoStatus}
           onChange={(e) => {
             displayToDoStatus(e.target.value);

@@ -4,14 +4,17 @@ import "./index.css";
 import App from "./App";
 import { AuthContextProvider } from "./components/LoginContext/auth-context";
 import { SignUpModalContextProvider } from "./components/SignUpModalContext.js/sign-up-context";
+import { LoginErrorNotificationContextProvider } from "./components/LoginForm/notification-context/error-notification-context";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <AuthContextProvider>
     <SignUpModalContextProvider>
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>
+      <LoginErrorNotificationContextProvider>
+        <React.StrictMode>
+          <App />
+        </React.StrictMode>
+      </LoginErrorNotificationContextProvider>
     </SignUpModalContextProvider>
   </AuthContextProvider>
 );

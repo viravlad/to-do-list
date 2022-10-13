@@ -6,22 +6,41 @@ import React, { useContext } from "react";
 import AuthContext from "../LoginContext/auth-context";
 import { LoginHttpRequest } from "../http-requests/LoginHttpRequest";
 import { SignUpModalContext } from "../SignUpModalContext.js/sign-up-context";
+import { displayErrorMessages } from "./utils/api-call-error-messages";
+import ErrorNotificationDialog from "./notification/ErrorNotificationDialog";
+import { LoginErrorNotificationContext } from "./notification-context/error-notification-context";
 
 const LoginForm = () => {
   const authCtx = useContext(AuthContext);
   const [enteredUsername, setEnteredUsername] = React.useState("");
   const [enteredPassword, setEnteredPassword] = React.useState("");
+  const [error, setError] = React.useState("");
+
   const signUpModalContext = React.useContext(SignUpModalContext);
+  const errorNotificationContext = React.useContext(
+    LoginErrorNotificationContext
+  );
 
   const loginUserHandler = async () => {
     try {
-      const token = await LoginHttpRequest(enteredUsername, enteredPassword);
-      authCtx.login(token);
-    } catch (error) {}
+      const data = await LoginHttpRequest(enteredUsername, enteredPassword);
+
+      authCtx.login(data.idToken);
+      clearInputs();
+    } catch (error) {
+      setError(displayErrorMessages(error.message));
+      errorNotificationContext.openNotificationHandler();
+    }
+  };
+
+  const clearInputs = () => {
+    setEnteredUsername("");
+    setEnteredPassword("");
   };
 
   return (
     <Box className="loginContainer">
+      {error ? <ErrorNotificationDialog error={error} /> : ""}
       <div className="loginLabels">
         <TextField
           className="usernameInput"
