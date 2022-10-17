@@ -53,7 +53,7 @@ const ViewToDoList = ({ todos }) => {
       </FormControl>
       <List className="listItems">
         {filteredTodos.map((todo) => (
-          <ViewToDoItem todo={todo} />
+          <ViewToDoItem todo={todo} key={todo.id} />
         ))}
       </List>
     </Box>

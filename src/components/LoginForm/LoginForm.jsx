@@ -4,7 +4,7 @@ import Button from "@mui/material/Button";
 import "./LoginForm.css";
 import React, { useContext } from "react";
 import AuthContext from "../LoginContext/auth-context";
-import { LoginHttpRequest } from "../http-requests/LoginHttpRequest";
+import { LoginHttpRequest } from "../services/loginService";
 import { SignUpModalContext } from "../SignUpModalContext.js/sign-up-context";
 import { displayErrorMessages } from "./utils/api-call-error-messages";
 import ErrorNotificationDialog from "./notification/ErrorNotificationDialog";

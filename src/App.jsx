@@ -7,7 +7,6 @@ import SignUpForm from "./components/SignUpForm/SignUpForm";
 import ToDoContainer from "./container/ToDoContainer";
 function App() {
   const authCtx = React.useContext(AuthContext);
-  const isLoggedIn = false;
   return (
     <div className="App">
       <Header />

@@ -7,26 +7,28 @@ import TextField from "@mui/material/TextField";
 import "./SignUpForm.css";
 import * as React from "react";
 import { SignUpModalContext } from "../SignUpModalContext.js/sign-up-context";
-import { SignUpHttpRequest } from "../http-requests/SignUpHttpRequest";
+import { SignUpHttpRequest } from "../services/signUpService";
+import { validateEmail } from "./util/validate-email";
+import { displayErrorMessages } from "./util/api-call-error-messages";
 
 const SignUpForm = () => {
   const [enteredUsername, setEnteredUsername] = React.useState("");
   const [enteredPassword, setEnteredPassword] = React.useState("");
+  const [error, setError] = React.useState("");
 
   const signUpModalContext = React.useContext(SignUpModalContext);
   const signUpHandler = async () => {
-    if (enteredUsername === "") {
+    if (!validateEmail(enteredUsername)) {
+      setError("Enter a valid email");
       return;
     }
+
     try {
       await SignUpHttpRequest(enteredUsername, enteredPassword);
+      signUpModalContext.closeSignUpModalHandler();
     } catch (error) {
-      console.log(error);
+      setError(displayErrorMessages(error.message));
     }
-
-    signUpModalContext.closeSignUpModalHandler();
-    setEnteredPassword("");
-    setEnteredUsername("");
   };
 
   return (
@@ -50,7 +52,9 @@ const SignUpForm = () => {
           onChange={(e) => {
             setEnteredUsername(e.target.value);
           }}
+          value={enteredUsername}
         />
+
         <TextField
           id="standard-basic"
           label="Password"
@@ -60,7 +64,9 @@ const SignUpForm = () => {
             setEnteredPassword(e.target.value);
           }}
           className="passwordInput"
+          value={enteredPassword}
         />
+        {error && <span style={{ color: "red" }}>{error}</span>}
         <Button
           onClick={signUpHandler}
           variant="outlined"

@@ -22,20 +22,21 @@ const ViewToDoItem = ({ todo }) => {
 
   const toDoStatusClass =
     todo.status === "completed" ? "completed" : "notCompleted";
-
   return (
     <ListItem
       className="listItem"
-      key={todo.id}
       secondaryAction={
         <>
-          <IconButton
-            edge="end"
-            aria-label="deletecheck"
-            onClick={() => updateToDoHandler(todo)}
-          >
-            <CheckIcon />
-          </IconButton>
+          {todo.status === "not completed" && (
+            <IconButton
+              edge="end"
+              aria-label="deletecheck"
+              onClick={() => updateToDoHandler(todo)}
+            >
+              <CheckIcon />
+            </IconButton>
+          )}
+
           <IconButton
             edge="end"
             aria-label="delete"

@@ -41,11 +41,6 @@ const NewToDo = () => {
           }}
           value={enteredToDoName}
         />
-        {/* {enteredToDoNameError && (
-          <Typography style={{ color: "red" }} variant={"subtitle2"}>
-            Enter a valid to do{" "}
-          </Typography>
-        )} */}
       </div>
       <Button variant="text" onClick={addNewToDoHandler}>
         <AddCircleIcon className="addNewToDoIcon" />
