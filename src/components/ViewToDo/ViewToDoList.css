@@ -7,7 +7,7 @@
   padding-bottom: 1rem;
 }
 .listItems {
-  width: 80vw;
+  width: 50vw;
   overflow: auto;
   height: 45vh;
 }
@@ -17,7 +17,7 @@
 }
 
 .selectField {
-  width: 40vw;
+  width: 12vw;
   margin-bottom: 1rem;
 }
 
@@ -30,6 +30,6 @@
     width: 80vw;
   }
   .selectField {
-    width: 50vw;
+    width: 42vw;
   }
 }
