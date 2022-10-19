@@ -9,6 +9,7 @@ export async function getToDoListService() {
     for (const key in data) {
       loadedTodos.push({
         id: key,
+        userId: data[key].userId,
         name: data[key].name,
         status: data[key].status,
       });

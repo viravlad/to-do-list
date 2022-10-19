@@ -24,7 +24,10 @@ const LoginForm = () => {
   const loginUserHandler = async () => {
     try {
       const data = await LoginHttpRequest(enteredUsername, enteredPassword);
+      console.log(data);
       authCtx.login(data.idToken);
+      authCtx.userIdHandler(data.localId);
+      console.log(data.localId);
       clearInputs();
     } catch (error) {
       setError(displayErrorMessages(error.message));

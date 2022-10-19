@@ -18,7 +18,7 @@ export async function LoginHttpRequest(email, password) {
       throw new Error(errorBody.error.message);
     }
     const data = await response.json();
-    console.log(data);
+
     return data;
   } catch (error) {
     throw error;

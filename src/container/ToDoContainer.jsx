@@ -21,7 +21,11 @@ const ToDoContainer = () => {
     try {
       setIsLoading(true);
       const loadedTodos = await getToDoListService();
-      setTodos(loadedTodos);
+      const userToDos = loadedTodos
+        .filter((todos) => todos.userId === authCtx.userId)
+        .map((t) => t);
+
+      setTodos(userToDos);
     } catch (error) {
       setToDoError(error.message);
     } finally {
