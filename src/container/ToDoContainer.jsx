@@ -57,7 +57,7 @@ const ToDoContainer = () => {
     );
   }
   return (
-    <>
+    <div>
       <NewToDo setUpdateToDoList={setUpdateToDoList} />
       {!toDoError ? (
         <ViewToDo todos={todos} setUpdateToDoList={setUpdateToDoList} />
@@ -75,7 +75,7 @@ const ToDoContainer = () => {
       ) : (
         ""
       )}
-    </>
+    </div>
   );
 };
 

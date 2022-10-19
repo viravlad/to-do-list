@@ -9,7 +9,7 @@
 .listItems {
   width: 70vw;
   overflow: auto;
-  height: 38vh;
+  height: 35vh;
 }
 .toDoText {
   padding-right: 30vw;
@@ -18,11 +18,11 @@
 
 .selectField {
   width: 160px !important;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .toDoSelect {
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 @media only screen and (min-width: 600px) {
