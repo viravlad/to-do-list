@@ -5,16 +5,19 @@ import AddCircleIcon from "@mui/icons-material/AddCircle";
 import Button from "@mui/material/Button";
 import { newToDoService } from "../services/newToDoService";
 import "./NewTodo.css";
+import AuthContext from "../LoginContext/auth-context";
 
 const NewToDo = ({ setUpdateToDoList }) => {
   const [enteredToDoName, setEnteredToDoName] = React.useState("");
   const [error, setError] = React.useState("");
+  const authCtx = React.useContext(AuthContext);
 
   const addNewToDoHandler = async () => {
     if (enteredToDoName === "") {
       return;
     }
     const newToDo = {
+      userId: authCtx.userId,
       name: enteredToDoName,
       status: "not completed",
     };
