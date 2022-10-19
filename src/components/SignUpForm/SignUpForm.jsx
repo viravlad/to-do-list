@@ -4,6 +4,8 @@ import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
+import Grow from "@mui/material/Grow";
+import Alert from "@mui/material/Alert";
 import "./SignUpForm.css";
 import * as React from "react";
 import { SignUpModalContext } from "../SignUpModalContext.js/sign-up-context";
@@ -15,6 +17,7 @@ const SignUpForm = () => {
   const [enteredUsername, setEnteredUsername] = React.useState("");
   const [enteredPassword, setEnteredPassword] = React.useState("");
   const [error, setError] = React.useState("");
+  const [show, setShow] = React.useState(false);
 
   const signUpModalContext = React.useContext(SignUpModalContext);
   const signUpHandler = async () => {
@@ -23,9 +26,27 @@ const SignUpForm = () => {
       return;
     }
 
+    const clearInputs = () => {
+      setEnteredUsername("");
+      setEnteredPassword("");
+    };
+
     try {
-      await SignUpHttpRequest(enteredUsername, enteredPassword);
-      signUpModalContext.closeSignUpModalHandler();
+      const response = await SignUpHttpRequest(
+        enteredUsername,
+        enteredPassword
+      );
+      if (response.ok) {
+        setShow(true);
+
+        (() => {
+          setTimeout(() => {
+            signUpModalContext.closeSignUpModalHandler();
+            setShow(false);
+            clearInputs();
+          }, 3500);
+        })();
+      }
     } catch (error) {
       setError(displayErrorMessages(error.message));
     }
@@ -83,6 +104,17 @@ const SignUpForm = () => {
           Close
         </Button>
       </DialogActions>
+      {show ? (
+        <Grow
+          in={show}
+          style={{ transformOrigin: "0 0 0" }}
+          {...(show ? { timeout: 2000 } : {})}
+        >
+          <Alert severity="success">Registered successfully!</Alert>
+        </Grow>
+      ) : (
+        ""
+      )}
     </Dialog>
   );
 };

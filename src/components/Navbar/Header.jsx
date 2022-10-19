@@ -3,14 +3,25 @@ import Typography from "@mui/material/Typography";
 import "./Header.css";
 import AuthContext from "../LoginContext/auth-context";
 import Button from "@mui/material/Button";
+import LogoutNotification from "./Notifications/LogoutNotification";
 
 const Header = () => {
   const authCtx = React.useContext(AuthContext);
 
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
+
+  const closeModalHandler = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <>
       {authCtx.isLoggedIn && (
-        <Button onClick={authCtx.logout} variant="text" className="logoutBtn">
+        <Button
+          onClick={() => setIsModalOpen(true)}
+          variant="text"
+          className="logoutBtn"
+        >
           Logout
         </Button>
       )}
@@ -27,6 +38,10 @@ const Header = () => {
           T<span style={{ color: "#408697" }}>o</span>Do
         </h3>
       </Typography>
+      <LogoutNotification
+        onCloseModalHandler={closeModalHandler}
+        isModalOpen={isModalOpen}
+      />
     </>
   );
 };

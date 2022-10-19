@@ -1,12 +1,12 @@
-import TextField from "@mui/material/TextField";
+import React from "react";
 import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import Button from "@mui/material/Button";
-import "./NewTodo.css";
 import { newToDoService } from "../services/newToDoService";
-import React from "react";
+import "./NewTodo.css";
 
-const NewToDo = () => {
+const NewToDo = ({ setUpdateToDoList }) => {
   const [enteredToDoName, setEnteredToDoName] = React.useState("");
   const [error, setError] = React.useState("");
 
@@ -19,13 +19,14 @@ const NewToDo = () => {
       status: "not completed",
     };
     try {
-      newToDoService(newToDo);
+      const response = await newToDoService(newToDo);
+      if (response.ok) {
+        setUpdateToDoList(true);
+        setEnteredToDoName("");
+      }
     } catch (error) {
-      console.log(error);
       setError(error.message);
     }
-
-    setEnteredToDoName("");
   };
 
   return (

@@ -17,6 +17,7 @@ export async function SignUpHttpRequest(email, password) {
       const errorBody = await response.json();
       throw new Error(errorBody.error.message);
     }
+    return response;
   } catch (error) {
     throw error;
   }

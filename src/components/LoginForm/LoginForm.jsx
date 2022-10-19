@@ -24,7 +24,6 @@ const LoginForm = () => {
   const loginUserHandler = async () => {
     try {
       const data = await LoginHttpRequest(enteredUsername, enteredPassword);
-
       authCtx.login(data.idToken);
       clearInputs();
     } catch (error) {

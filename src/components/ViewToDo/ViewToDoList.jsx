@@ -3,12 +3,12 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import "./ViewToDoList.css";
 import List from "@mui/material/List";
 import ViewToDoItem from "./ViewToDoItem";
 import { useEffect, useState } from "react";
+import "./ViewToDoList.css";
 
-const ViewToDoList = ({ todos }) => {
+const ViewToDoList = ({ todos, setUpdateToDoList }) => {
   const [filteredTodos, setFilteredTodos] = useState([]);
   const [toDoStatus, setToDoStatus] = useState("");
   useEffect(() => {
@@ -53,7 +53,11 @@ const ViewToDoList = ({ todos }) => {
       </FormControl>
       <List className="listItems">
         {filteredTodos.map((todo) => (
-          <ViewToDoItem todo={todo} key={todo.id} />
+          <ViewToDoItem
+            todo={todo}
+            key={todo.id}
+            setUpdateToDoList={setUpdateToDoList}
+          />
         ))}
       </List>
     </Box>

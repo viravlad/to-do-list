@@ -7,17 +7,19 @@ import { deleteToDoservice } from "../services/deleteToDoService";
 import { updateToDoService } from "../services/updateToDoService";
 import "./ViewToDoItem.css";
 
-const ViewToDoItem = ({ todo }) => {
-  const deleteToDoHandler = (todo) => {
-    deleteToDoservice(todo);
+const ViewToDoItem = ({ todo, setUpdateToDoList }) => {
+  const deleteToDoHandler = async (todo) => {
+    await deleteToDoservice(todo);
+    setUpdateToDoList(true);
   };
 
-  const updateToDoHandler = (todo) => {
+  const updateToDoHandler = async (todo) => {
     const data = {
       ...todo,
       status: "completed",
     };
-    updateToDoService(todo, data);
+    await updateToDoService(todo, data);
+    setUpdateToDoList(true);
   };
 
   const toDoStatusClass =
