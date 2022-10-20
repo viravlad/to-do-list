@@ -1,7 +1,7 @@
-export async function getToDoListService() {
+export async function getToDoListService(userId) {
   try {
     const response = await fetch(
-      "https://todo-3ae6d-default-rtdb.firebaseio.com/todos.json",
+      `https://todo-3ae6d-default-rtdb.firebaseio.com/users/${userId}/todoList.json`,
       { method: "GET" }
     );
     const data = await response.json();
@@ -9,11 +9,12 @@ export async function getToDoListService() {
     for (const key in data) {
       loadedTodos.push({
         id: key,
-        userId: data[key].userId,
+
         name: data[key].name,
         status: data[key].status,
       });
     }
+    console.log(data);
     return loadedTodos;
   } catch (error) {
     throw new Error(error);

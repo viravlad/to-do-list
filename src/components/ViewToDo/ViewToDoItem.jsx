@@ -6,10 +6,14 @@ import CheckIcon from "@mui/icons-material/Check";
 import { deleteToDoservice } from "../services/deleteToDoService";
 import { updateToDoService } from "../services/updateToDoService";
 import "./ViewToDoItem.css";
+import React from "react";
+import AuthContext from "../LoginContext/auth-context";
 
 const ViewToDoItem = ({ todo, setUpdateToDoList }) => {
+  const authCtx = React.useContext(AuthContext);
+
   const deleteToDoHandler = async (todo) => {
-    await deleteToDoservice(todo);
+    await deleteToDoservice(todo, authCtx.userId);
     setUpdateToDoList(true);
   };
 
@@ -18,7 +22,7 @@ const ViewToDoItem = ({ todo, setUpdateToDoList }) => {
       ...todo,
       status: "completed",
     };
-    await updateToDoService(todo, data);
+    await updateToDoService(todo, data, authCtx.userId);
     setUpdateToDoList(true);
   };
 

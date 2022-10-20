@@ -1,7 +1,7 @@
-export async function deleteToDoservice(todo) {
+export async function deleteToDoservice(todo, userId) {
   try {
     return await fetch(
-      `https://todo-3ae6d-default-rtdb.firebaseio.com/todos/${todo.id}.json`,
+      `https://todo-3ae6d-default-rtdb.firebaseio.com/users/${userId}/todoList/${todo.id}.json`,
       {
         method: "DELETE",
       }

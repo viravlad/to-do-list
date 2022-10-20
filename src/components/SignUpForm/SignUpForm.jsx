@@ -44,7 +44,7 @@ const SignUpForm = () => {
             signUpModalContext.closeSignUpModalHandler();
             setShow(false);
             clearInputs();
-          }, 3500);
+          }, 5000);
         })();
       }
     } catch (error) {
@@ -66,6 +66,11 @@ const SignUpForm = () => {
         sx={{ display: "flex", flexDirection: "column" }}
         className="signUpForm"
       >
+        {show && (
+          <Alert severity="success" className="registerAlert">
+            Registered successfully!
+          </Alert>
+        )}
         <TextField
           id="standard-basic"
           label="Username"
@@ -104,17 +109,6 @@ const SignUpForm = () => {
           Close
         </Button>
       </DialogActions>
-      {show ? (
-        <Grow
-          in={show}
-          style={{ transformOrigin: "0 0 0" }}
-          {...(show ? { timeout: 2000 } : {})}
-        >
-          <Alert severity="success">Registered successfully!</Alert>
-        </Grow>
-      ) : (
-        ""
-      )}
     </Dialog>
   );
 };

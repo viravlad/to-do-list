@@ -16,13 +16,13 @@ const NewToDo = ({ setUpdateToDoList }) => {
     if (enteredToDoName === "") {
       return;
     }
+
     const newToDo = {
-      userId: authCtx.userId,
       name: enteredToDoName,
       status: "not completed",
     };
     try {
-      const response = await newToDoService(newToDo);
+      const response = await newToDoService(newToDo, authCtx.userId);
       if (response.ok) {
         setUpdateToDoList(true);
         setEnteredToDoName("");
