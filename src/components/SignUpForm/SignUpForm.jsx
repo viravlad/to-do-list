@@ -1,17 +1,16 @@
+import * as React from "react";
 import DialogTitle from "@mui/material/DialogTitle";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-import Grow from "@mui/material/Grow";
 import Alert from "@mui/material/Alert";
-import "./SignUpForm.css";
-import * as React from "react";
 import { SignUpModalContext } from "../SignUpModalContext.js/sign-up-context";
 import { SignUpHttpRequest } from "../services/signUpService";
 import { validateEmail } from "./util/validate-email";
 import { displayErrorMessages } from "./util/api-call-error-messages";
+import "./SignUpForm.css";
 
 const SignUpForm = () => {
   const [enteredUsername, setEnteredUsername] = React.useState("");
@@ -37,8 +36,8 @@ const SignUpForm = () => {
         enteredPassword
       );
       if (response.ok) {
+        setError("");
         setShow(true);
-
         (() => {
           setTimeout(() => {
             signUpModalContext.closeSignUpModalHandler();

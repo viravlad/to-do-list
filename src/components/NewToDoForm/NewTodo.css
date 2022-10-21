@@ -16,6 +16,10 @@
   width: 50vw;
 }
 
+.container span {
+  flex-direction: column;
+}
+
 @media only screen and (min-width: 600px) {
   .inputField {
     width: 280px;

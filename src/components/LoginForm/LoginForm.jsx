@@ -1,14 +1,14 @@
+import React, { useContext } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import "./LoginForm.css";
-import React, { useContext } from "react";
+import ErrorNotificationDialog from "./notification/ErrorNotificationDialog";
 import AuthContext from "../LoginContext/auth-context";
 import { LoginHttpRequest } from "../services/loginService";
 import { SignUpModalContext } from "../SignUpModalContext.js/sign-up-context";
 import { displayErrorMessages } from "./utils/api-call-error-messages";
-import ErrorNotificationDialog from "./notification/ErrorNotificationDialog";
 import { LoginErrorNotificationContext } from "./notification-context/error-notification-context";
+import "./LoginForm.css";
 
 const LoginForm = () => {
   const authCtx = useContext(AuthContext);
@@ -24,10 +24,9 @@ const LoginForm = () => {
   const loginUserHandler = async () => {
     try {
       const data = await LoginHttpRequest(enteredUsername, enteredPassword);
-      console.log(data);
+
       authCtx.login(data.idToken);
       authCtx.userIdHandler(data.localId);
-      console.log(data.localId);
       clearInputs();
     } catch (error) {
       setError(displayErrorMessages(error.message));
@@ -42,7 +41,7 @@ const LoginForm = () => {
 
   return (
     <Box className="loginContainer">
-      {error ? <ErrorNotificationDialog error={error} /> : ""}
+      {error && <ErrorNotificationDialog error={error} />}
       <div className="loginLabels">
         <TextField
           className="usernameInput"

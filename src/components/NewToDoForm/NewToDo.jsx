@@ -4,8 +4,8 @@ import TextField from "@mui/material/TextField";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import Button from "@mui/material/Button";
 import { newToDoService } from "../services/newToDoService";
-import "./NewTodo.css";
 import AuthContext from "../LoginContext/auth-context";
+import "./NewTodo.css";
 
 const NewToDo = ({ setUpdateToDoList }) => {
   const [enteredToDoName, setEnteredToDoName] = React.useState("");
@@ -14,6 +14,7 @@ const NewToDo = ({ setUpdateToDoList }) => {
 
   const addNewToDoHandler = async () => {
     if (enteredToDoName === "") {
+      setError("Please fill out this field");
       return;
     }
 
@@ -49,7 +50,7 @@ const NewToDo = ({ setUpdateToDoList }) => {
       <Button variant="text" onClick={addNewToDoHandler}>
         <AddCircleIcon className="addNewToDoIcon" />
       </Button>
-      <p>{error}</p>
+      <span>{error}</span>
     </Box>
   );
 };

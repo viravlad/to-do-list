@@ -1,9 +1,9 @@
 import * as React from "react";
-import Typography from "@mui/material/Typography";
-import "./Header.css";
 import AuthContext from "../LoginContext/auth-context";
+import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import LogoutNotification from "./Notifications/LogoutNotification";
+import "./Header.css";
 
 const Header = () => {
   const authCtx = React.useContext(AuthContext);

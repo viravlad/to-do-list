@@ -5,11 +5,22 @@
 .notCompleted {
   color: #fba100;
 }
+
 .listItem {
   border: 2px solid #408697;
   margin-top: 1rem;
+  padding: 10px;
   border-radius: 0.5rem;
   box-shadow: 2px 2px 15px -6px #000000;
+}
+
+.editButton {
+  color: #408697 !important;
+  margin-left: auto !important;
+}
+
+.editInput > input {
+  margin-right: 5px !important;
 }
 
 @media only screen and (max-width: 600px) {
