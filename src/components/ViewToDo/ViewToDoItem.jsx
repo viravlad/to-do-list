@@ -1,15 +1,17 @@
+import React from "react";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import IconButton from "@mui/material/IconButton";
+import SaveIcon from "@mui/icons-material/Save";
+import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import CheckIcon from "@mui/icons-material/Check";
 import Input from "@mui/material/Input";
 import { Button } from "@mui/material";
 import { deleteToDoservice } from "../services/deleteToDoService";
 import { updateToDoService } from "../services/updateToDoService";
-import "./ViewToDoItem.css";
-import React from "react";
 import AuthContext from "../LoginContext/auth-context";
+import "./ViewToDoItem.css";
 
 const ViewToDoItem = ({ todo, setUpdateToDoList }) => {
   const authCtx = React.useContext(AuthContext);
@@ -31,6 +33,7 @@ const ViewToDoItem = ({ todo, setUpdateToDoList }) => {
   };
 
   const editHandler = async () => {
+    //validare -> empty,equal
     setIsEdit((prev) => !prev);
     const data = {
       ...todo,
@@ -40,8 +43,6 @@ const ViewToDoItem = ({ todo, setUpdateToDoList }) => {
     setUpdateToDoList(true);
   };
 
-  let EditBtnText = isEdit ? "Save" : "Edit";
-
   const toDoStatusClass =
     todo.status === "completed" ? "completed" : "notCompleted";
   return (
@@ -49,6 +50,14 @@ const ViewToDoItem = ({ todo, setUpdateToDoList }) => {
       className="listItem"
       secondaryAction={
         <>
+          <IconButton
+            edge="end"
+            aria-label="delete"
+            onClick={editHandler}
+            className="editButton"
+          >
+            {isEdit ? <SaveIcon /> : <EditIcon />}
+          </IconButton>
           {todo.status === "not completed" && (
             <IconButton
               edge="end"
@@ -69,6 +78,7 @@ const ViewToDoItem = ({ todo, setUpdateToDoList }) => {
         </>
       }
     >
+      {/** text lung ce se intampla*/}
       {isEdit ? (
         <Input
           defaultValue={todo.name}
@@ -76,15 +86,11 @@ const ViewToDoItem = ({ todo, setUpdateToDoList }) => {
         />
       ) : (
         <ListItemText
-          className={toDoStatusClass}
+          className={todo.status === "completed" ? "completed" : "notCompleted"}
           primary={todo.name}
           secondary={todo.status}
         />
       )}
-
-      <Button onClick={editHandler} className="editButton">
-        {EditBtnText}
-      </Button>
     </ListItem>
   );
 };

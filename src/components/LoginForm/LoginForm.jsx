@@ -24,9 +24,11 @@ const LoginForm = () => {
   const loginUserHandler = async () => {
     try {
       const data = await LoginHttpRequest(enteredUsername, enteredPassword);
-
+      //call get to do list and setez in context
+      //create context 1.todos 2.update 3.userId
       authCtx.login(data.idToken);
       authCtx.userIdHandler(data.localId);
+
       clearInputs();
     } catch (error) {
       setError(displayErrorMessages(error.message));
