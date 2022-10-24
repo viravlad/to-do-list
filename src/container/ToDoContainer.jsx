@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ViewToDo from "../components/ViewToDo/ViewToDoList";
 import NewToDo from "../components/NewToDoForm/NewToDo";
-
 import Grow from "@mui/material/Grow";
 import Alert from "@mui/material/Alert";
 import { getToDoListService } from "../components/services/getToDoListService";
