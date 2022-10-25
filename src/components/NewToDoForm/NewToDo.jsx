@@ -27,6 +27,7 @@ const NewToDo = ({ setUpdateToDoList }) => {
       if (response.ok) {
         setUpdateToDoList(true);
         setEnteredToDoName("");
+        setError("");
       }
     } catch (error) {
       setError(error.message);

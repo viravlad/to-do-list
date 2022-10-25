@@ -16,8 +16,11 @@
   width: 50vw;
 }
 
-.container span {
-  flex-direction: column;
+.container > span {
+  position: absolute;
+  margin-right: 5rem;
+  margin-top: 3.7rem;
+  color: red;
 }
 
 @media only screen and (min-width: 600px) {
